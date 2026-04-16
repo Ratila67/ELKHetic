@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+
+DATA/*
+!DATA/.gitkeep
+*.zip
+.venv_elk
 # Distribution / packaging
 .Python
 build/
