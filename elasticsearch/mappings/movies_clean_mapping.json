@@ -1,0 +1,31 @@
+{
+  "mappings": {
+    "properties": {
+      "id": { "type": "integer" },
+      "title": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword", "ignore_above": 256 }
+        }
+      },
+      "genres": { "type": "keyword" },
+      "original_language": { "type": "keyword" },
+      "overview": { "type": "text" },
+      "popularity": { "type": "float" },
+      "production_companies": { "type": "keyword" },
+      "release_date": { "type": "date" },
+      "budget": { "type": "float" },
+      "revenue": { "type": "float" },
+      "runtime": { "type": "float" },
+      "status": { "type": "keyword" },
+      "tagline": { "type": "text" },
+      "vote_average": { "type": "float" },
+      "vote_count": { "type": "integer" },
+      "credits": { "type": "keyword" },
+      "keywords": { "type": "keyword" },
+      "poster_path": { "type": "keyword", "index": false },
+      "backdrop_path": { "type": "keyword", "index": false },
+      "recommendations": { "type": "text" }
+    }
+  }
+}
