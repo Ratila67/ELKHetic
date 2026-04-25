@@ -113,7 +113,7 @@ def build_query(q, genre, language, year):
                 "query": q,
                 "fields": ["title^3", "overview", "tagline^2", "keywords"],
                 "type": "best_fields",
-                "analyzer": "movies_analyzer",
+                "analyzer": "standard",
                 "fuzziness": "AUTO"
             }
         })
