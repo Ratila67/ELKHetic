@@ -27,6 +27,16 @@ Tout document portant le tag `_data_quality` est exclu de `movies_clean` et rest
 uniquement dans `movies_raw`.
 
 ---
+### Normalisation des structures complexes (F3-02)
+
+Avant le traitement des anomalies de qualité, le pipeline normalise les champs `genres`, `keywords`, `credits` et `production_companies`. Ces champs arrivent du CSV dans un format JSON dégradé (guillemets simples).
+
+* **Nettoyage par Regex** : Un script Ruby remplace les guillemets simples par des doubles sur les patterns clés (ex: `\': \'` -> `\": \"`) pour rendre le contenu conforme au standard JSON tout en préservant les apostrophes des noms propres (ex: *O'Connell*).
+* **Extraction de données** : Les tableaux d'objets sont simplifiés en listes de chaînes de caractères en extrayant uniquement la valeur de la clé `"name"`.
+    * *Exemple :* `[{"name": "Action"}]` → `["Action"]`.
+* **Traçabilité** : En cas d'échec de parsing sur un champ, un tag spécifique `_json_parse_error_<champ>` est ajouté pour permettre un audit ultérieur sans bloquer l'indexation.
+
+---
 
 ## Métriques de qualité avant/après nettoyage
 
