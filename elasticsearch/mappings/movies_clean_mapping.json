@@ -1,0 +1,103 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "movies_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "movies_stop",
+            "movies_stemmer"
+          ]
+        }
+      },
+      "filter": {
+        "movies_stop": {
+          "type": "stop",
+          "stopwords": "_english_"
+        },
+        "movies_stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "movies_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "genres": {
+        "type": "keyword"
+      },
+      "original_language": {
+        "type": "keyword"
+      },
+      "overview": {
+        "type": "text",
+        "analyzer": "movies_analyzer"
+      },
+      "popularity": {
+        "type": "float"
+      },
+      "production_companies": {
+        "type": "keyword"
+      },
+      "release_date": {
+        "type": "date"
+      },
+      "budget": {
+        "type": "float"
+      },
+      "revenue": {
+        "type": "float"
+      },
+      "runtime": {
+        "type": "float"
+      },
+      "status": {
+        "type": "keyword"
+      },
+      "tagline": {
+        "type": "text",
+        "analyzer": "movies_analyzer"
+      },
+      "vote_average": {
+        "type": "float"
+      },
+      "vote_count": {
+        "type": "integer"
+      },
+      "credits": {
+        "type": "keyword"
+      },
+      "keywords": {
+        "type": "keyword"
+      },
+      "poster_path": {
+        "type": "keyword",
+        "index": false
+      },
+      "backdrop_path": {
+        "type": "keyword",
+        "index": false
+      },
+      "recommendations": {
+        "type": "text",
+        "analyzer": "movies_analyzer"
+      }
+    }
+  }
+}
